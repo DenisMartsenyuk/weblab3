@@ -22,7 +22,7 @@ public class PointDAOImpl implements PointsDAO { //todo мб тоже сингл
     public void clear() {
         Session session = HibernateSessionFactory.getSessionFactory().openSession();
         Transaction tx1 = session.beginTransaction();
-        session.createQuery("delete from Point").executeUpdate();
+        session.createQuery("delete from Point").executeUpdate(); //todo перейти от запроса к jpa  и аннотация Transaction
         tx1.commit();
         session.close();
     }

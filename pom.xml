@@ -25,7 +25,6 @@
       <version>5.4.24.Final</version>
     </dependency>
 
-
     <dependency>
       <groupId>javax.enterprise</groupId>
       <artifactId>cdi-api</artifactId>
@@ -42,6 +41,12 @@
       <groupId>com.sun.faces</groupId>
       <artifactId>jsf-impl</artifactId>
       <version>2.1.7</version>
+    </dependency>
+
+    <dependency>
+      <groupId>org.primefaces</groupId>
+      <artifactId>primefaces</artifactId>
+      <version>8.0</version>
     </dependency>
 
   </dependencies>

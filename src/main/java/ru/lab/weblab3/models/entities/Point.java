@@ -5,6 +5,9 @@ import javax.persistence.*;
 @Entity
 @Table (name = "points")
 public class Point {
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private int id;
 
     @Column (name = "x")
     private Double x;
@@ -15,9 +18,7 @@ public class Point {
     @Column (name = "r")
     private Double r;
 
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private int id;
+    @Column (name = "hit")
     private Boolean hit;
 
     public Point(Double x, Double y, Double r) {

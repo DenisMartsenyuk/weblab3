@@ -3,7 +3,9 @@ package ru.lab.weblab3.services.factories;
 import ru.lab.weblab3.models.entities.Point;
 import ru.lab.weblab3.services.checkers.HitChecker;
 
-public class PointFactory {
+
+//
+public class PointFactory { //todo EJB
     private static PointFactory instance;
 
     private final HitChecker field;
@@ -19,9 +21,9 @@ public class PointFactory {
         return instance;
     }
 
-    public Point buildPoint(String xValue, String yValue, String rValue) {
-        Point p1 = new Point(1.0, 2.0, 3.0);
-        p1.setHit(true);
-        return p1;
+    public Point buildPoint(Double x, Double y, Double r) {
+        Point point = new Point(x, y, r);
+        point.setHit(field.isHit(x, y, r));
+        return point;
     }
 }

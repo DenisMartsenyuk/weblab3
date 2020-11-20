@@ -4,9 +4,13 @@
       xmlns:h="http://xmlns.jcp.org/jsf/html"
       xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
       xmlns:f="http://xmlns.jcp.org/jsf/core"
-      xmlns:p="http://java.sun.com/jsf/html">
+      xmlns:p="http://java.sun.com/jsf/html"
+      xmlns:a="http://xmlns.jcp.org/jsf/passthrough"
+      xmlns:pr="http://primefaces.org/ui">
 <h:head>
     <title>Основная страница</title>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="js/index_script.js"></script>
 </h:head>
 
 <h:body>
@@ -18,48 +22,113 @@
         </h:form>
     </header>
 
+    <aside class="left">
+        <svg onclick="clickSvg(evt)" width="300" height="300" xmlns="http://www.w3.org/2000/svg">
+
+            <path  class="figures" d="M 250 150 A 100 100, 90, 0, 0, 150 50 L 150 150 Z" fill="#32D4E2" fill-opacity="0.3" stroke="#32D4E2"></path>
+            <polygon class="figures" points="50,50 150,50 150,150, 50,150" fill="#32D4E2" fill-opacity="0.3" stroke="#32D4E2"></polygon>
+            <polygon class="figures" points="150,150 250,150 150,250" fill="#32D4E2" fill-opacity="0.3" stroke="#32D4E2"></polygon>
+
+
+            <line x1="0" x2="300" y1="150" y2="150" stroke="black"></line>
+            <line x1="150" x2="150" y1="0" y2="300" stroke="black"></line>
+            <polygon points="150,0 144,15 156,15" stroke="black"></polygon>
+            <polygon points="300,150 285,156 285,144" stroke="black"></polygon>
+
+            <line x1="200" x2="200" y1="155" y2="145" stroke="black"></line>
+            <line x1="250" x2="250" y1="155" y2="145" stroke="black"></line>
+
+            <line x1="50"  x2="50"  y1="155" y2="145" stroke="black"></line>
+            <line x1="100" x2="100" y1="155" y2="145" stroke="black"></line>
+
+            <line x1="145" x2="155" y1="100" y2="100" stroke="black"></line>
+            <line x1="145" x2="155" y1="50"  y2="50"  stroke="black"></line>
+
+            <line x1="145" x2="155" y1="200" y2="200" stroke="black"></line>
+            <line x1="145" x2="155" y1="250" y2="250" stroke="black"></line>
+
+            <text x="195" y="140">R/2</text>
+            <text x="248" y="140">R</text>
+
+            <text x="40" y="140">-R</text>
+            <text x="90" y="140">-R/2</text>
+
+            <text x="160" y="105">R/2</text>
+            <text x="160" y="55">R</text>
+
+            <text x="160" y="205">-R/2</text>
+            <text x="160" y="255">-R</text>
+
+            <g id="point-storage">
+
+            </g>
+
+            <polygon points="0,0 0,300 300,300, 300,0" opacity="0"></polygon>
+
+        </svg>
+    </aside>
+
     <div class="middle">
         <main>
-            <h:form>
-                <h:selectOneMenu title="X">
-                    <f:selectItem itemLabel="-4"></f:selectItem>
-                    <f:selectItem itemLabel="-3"></f:selectItem>
-                    <f:selectItem itemLabel="-2"></f:selectItem>
-                    <f:selectItem itemLabel="-1"></f:selectItem>
-                    <f:selectItem itemLabel="0"></f:selectItem>
-                    <f:selectItem itemLabel="1"></f:selectItem>
-                    <f:selectItem itemLabel="2"></f:selectItem>
-                    <f:selectItem itemLabel="3"></f:selectItem>
-                    <f:selectItem itemLabel="4"></f:selectItem>
+            <h:form id="change-values">
+                <h:selectOneMenu title="X" converter="javax.faces.Double" value="#{pointsService.currentX}">
+                    <f:selectItem itemLabel="-4" itemValue="-4"></f:selectItem>
+                    <f:selectItem itemLabel="-3" itemValue="-3"></f:selectItem>
+                    <f:selectItem itemLabel="-2" itemValue="-2"></f:selectItem>
+                    <f:selectItem itemLabel="-1" itemValue="-1"></f:selectItem>
+                    <f:selectItem itemLabel="0" itemValue="0"></f:selectItem>
+                    <f:selectItem itemLabel="1" itemValue="1"></f:selectItem>
+                    <f:selectItem itemLabel="2" itemValue="2"></f:selectItem>
+                    <f:selectItem itemLabel="3" itemValue="3"></f:selectItem>
+                    <f:selectItem itemLabel="4" itemValue="4"></f:selectItem>
+                    <pr:ajax event="change"></pr:ajax>
                 </h:selectOneMenu>
 
-                <h:inputText title="Y">
-                    <f:validateDoubleRange minimum="-3.0" maximum="3.0"></f:validateDoubleRange>
+                <h:inputText id="y-input" title="Y" maxlength="7" a:placeholder="(-3; 3)" converter="javax.faces.Double" value="#{pointsService.currentY}">
+                    <f:validateDoubleRange  minimum="-3.0" maximum="3.0"></f:validateDoubleRange>
+                    <pr:ajax event="change" update="y-input"></pr:ajax>
                 </h:inputText>
+<!--                todo при валидации что-то вывести-->
 
-                <h:selectBooleanCheckbox title="1.0">1.0</h:selectBooleanCheckbox>
-                <h:selectBooleanCheckbox title="1.5">1.5</h:selectBooleanCheckbox>
-                <h:selectBooleanCheckbox title="2.0">2.0</h:selectBooleanCheckbox>
-                <h:selectBooleanCheckbox title="2.5">2.5</h:selectBooleanCheckbox>
-                <h:selectBooleanCheckbox title="3.0">3.0</h:selectBooleanCheckbox>
+
+                <h:selectBooleanCheckbox styleClass="checked" title="1.0" value="#{pointsService.is1R}" onchange="selectCheckBox(this)">
+                    <pr:ajax event="change"></pr:ajax>
+                </h:selectBooleanCheckbox>
+                <label>1.0</label>
+                <h:selectBooleanCheckbox styleClass="unckecked" title="1.5" value="#{pointsService.is2R}" onchange="selectCheckBox(this)">
+                    <pr:ajax event="change"></pr:ajax>
+                </h:selectBooleanCheckbox>
+                <label>1.5</label>
+                <h:selectBooleanCheckbox styleClass="unckecked" title="2.0" value="#{pointsService.is3R}" onchange="selectCheckBox(this)">
+                    <pr:ajax event="change"></pr:ajax>
+                </h:selectBooleanCheckbox>
+                <label>2.0</label>
+                <h:selectBooleanCheckbox styleClass="unckecked" title="2.5" value="#{pointsService.is4R}" onchange="selectCheckBox(this)">
+                    <pr:ajax event="change"></pr:ajax>
+                </h:selectBooleanCheckbox>
+                <label>2.5</label>
+                <h:selectBooleanCheckbox styleClass="unckecked" title="3.0" value="#{pointsService.is5R}" onchange="selectCheckBox(this)">
+                    <pr:ajax event="change"></pr:ajax>
+                </h:selectBooleanCheckbox>
+                <label>3.0</label>
             </h:form>
 
-            <h:form id="check_form">
+            <h:form id="check-form">
                 <h:commandButton value="Проверить" action="#{pointsService.addPoint()}">
-                    <f:ajax execute="check_form" render="table_result"/>
+                    <f:ajax execute="check-form" render="table-result"/>
                 </h:commandButton>
             </h:form>
 
-            <h:form id="delete">
+            <h:form id="delete-form">
                 <h:commandButton value="Очистить" action="#{pointsService.clear}">
-                    <f:ajax execute="delete_form" render="table_result"/>
+                    <f:ajax execute="delete-form" render="table-result"/>
                 </h:commandButton>
             </h:form>
         </main>
 
         <aside class="right">
 
-            <h:dataTable id="table_result" value="#{pointsService.getPoints()}" var="point">
+            <h:dataTable id="table-result" value="#{pointsService.getPoints()}" var="point">
                 <h:column>
                     <f:facet name="header">X</f:facet>
                     #{point.x}
