@@ -1,12 +1,21 @@
-// $(document).ready(function() {
-//     updateCheckBox($("#lastR").val());
-//     drawPoints();
-// });
+$(document).ready(function() {
+    fillCheckBox();
+    drawPoints();
+});
+
+function fillCheckBox() {
+    $(".r-checkbox").each(function() {
+        if ($(this).attr("checked") === "checked") {
+            $(this).addClass("checked");
+        } else {
+            $(this).addClass("unchecked");
+        }
+    });
+}
 
 function selectCheckBox(checkBox) {
     $('.checked').prop("checked", false);
-    $('.checked').removeClass("checked");
-    $('.checked').addClass("unchecked");
+    $('.checked').removeClass("checked").addClass("unchecked");
     checkBox.classList.remove("unchecked");
     checkBox.classList.add("checked");
     $(checkBox).prop("checked", true);
@@ -34,20 +43,36 @@ function buildClickRequest(x, y) {
     console.log("x: " + x);
     console.log("y: " + y);
     console.log("r: " + r);
-    // $("#x-field").val(x);
-    // $("#y-field").val(y);
-    // $("#request").submit();
+    document.getElementById('check-form-invisible:x-value-click').value = x;
+    document.getElementById('check-form-invisible:y-value-click').value = y;
+    $("#check-form-invisible\\:button-invisible").click();
 }
 
-// function updateCheckBox(value) {
-//     console.log(value);
-//     $('input[name="r"]').each(function (index, elem) {
-//         if ($(elem).val() == value){
-//             selectCheckBox($(elem));
+function updateSvg(data) {
+    //sleep(100);
+    drawPoints();
+    //todo как решить ajaxom...
+}
+
+// function getPoints() {
+//     let res = [];
+//     let entriesNodes = document.getElementById("entries_table_data").childNodes;
+//     for (let i = 0; i < entriesNodes.length; i++) {
+//         let values = entriesNodes[i].childNodes;
+//         if (values.length === 1) {
+//             continue;
 //         }
-//     });
+//         res.push({
+//             x: values[1].innerText,
+//             y: values[2].innerText,
+//             r: values[3].innerText,
+//             result: values[4].innerText
+//         })
+//     }
+//     return res;
 // }
-//
+
+
 function drawPoints() {
     console.log("drawing");
     let value = $('.checked').attr("title");
@@ -56,31 +81,25 @@ function drawPoints() {
     let points = "";
     for (let i = 1; i < table.rows.length; i++) {
         if (Number(table.rows[i].cells[2].textContent) === Number(value)) { //table.rows[i].cells[3].textContent === "true" &&
-            points = points + getDescriptionPoint(Number(table.rows[i].cells[0].textContent), Number(table.rows[i].cells[1].textContent), Number(table.rows[i].cells[2].textContent));
-            console.log("point");
+            points = points + getDescriptionPoint(Number(table.rows[i].cells[0].textContent), Number(table.rows[i].cells[1].textContent), Number(table.rows[i].cells[2].textContent), table.rows[i].cells[3].textContent);
+
         }
     }
     group.innerHTML = points;
-    //todo отрисовка непопавших
 }
 
-function getDescriptionPoint(x, y, r) {
+function getDescriptionPoint(x, y, r, hit) {
     x = Number(x);
     y = Number(y);
     r = Number(r);
     x = 150.0 + x * 100.0 / r;
     y = 150.0 - y * 100.0 / r;
-    return '<circle fill="#32D4E2" class="points" r="3" cx="' + x + '" cy="' + y + '"></circle>';
+    hit = hit.replace(/\s+/g, "");
+    let pointType;
+    if (hit === "true") {
+        pointType = "hit";
+    } else {
+        pointType = "not-hit";
+    }
+    return '<circle class="' + pointType +'" r="3" cx="' + x + '" cy="' + y + '"></circle>';
 }
-//
-// function setDesignInput(input, color, border) {
-//     $(input).css("border", border);
-//     $(input).css("background", color);
-// }
-//
-// function buildRequest() {
-//     if (validation($("#x-field")) && validation($("#y-field"))) {
-//         $("#request").submit();
-//     }
-// }
-//

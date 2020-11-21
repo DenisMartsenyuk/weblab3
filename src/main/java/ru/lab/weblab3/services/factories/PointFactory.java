@@ -3,8 +3,6 @@ package ru.lab.weblab3.services.factories;
 import ru.lab.weblab3.models.entities.Point;
 import ru.lab.weblab3.services.checkers.HitChecker;
 
-
-//
 public class PointFactory { //todo EJB
     private static PointFactory instance;
 

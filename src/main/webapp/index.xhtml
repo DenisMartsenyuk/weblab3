@@ -4,7 +4,8 @@
       xmlns:h="http://xmlns.jcp.org/jsf/html"
       xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
       xmlns:f="http://xmlns.jcp.org/jsf/core"
-      xmlns:p="http://java.sun.com/jsf/html">
+      xmlns:p="http://java.sun.com/jsf/html"
+      xmlns:pr="http://primefaces.org/ui">
 
 <h:head>
     <title>Стартовая страница</title>
@@ -13,10 +14,24 @@
 <h:body>
     <header>
         <h1>Лабораторная работа №2. Вариант: 4577.</h1>
-        <h:form>
-            <p:commandButton value="start" action="index"/>
-            <p:commandButton value="main" action="main"/>
-        </h:form>
     </header>
+    <main>
+        <h:form>
+            <h4>Что тут у нас? Сегодня значит: </h4>
+            <h:outputText id="date" value="#{time}">
+                <f:convertDateTime pattern="dd.MM.yyyy"/>
+            </h:outputText>
+            <h4>Время уже</h4>
+            <h:outputText id="time" value="#{time}">
+                <f:convertDateTime pattern="HH:mm:ss" timeZone="Europe/Moscow"/>
+            </h:outputText>
+            <h4>Мда, а ты еще не сдал третью лабу по ПИПу...</h4>
+            <pr:poll interval="7" update="date time"/>
+        </h:form>
+
+        <h:form>
+            <p:commandButton value="Туда, где можно что-то потыкать" action="main-page"/>
+        </h:form>
+    </main>
 </h:body>
 </html>

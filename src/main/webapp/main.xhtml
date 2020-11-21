@@ -11,14 +11,14 @@
     <title>Основная страница</title>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
     <script src="js/index_script.js"></script>
+    <link rel="stylesheet" href="css/style.css" type="text/css"></link>
 </h:head>
 
 <h:body>
     <header>
         <h1>Лабораторная работа №2. Вариант: 4577.</h1>
         <h:form>
-            <p:commandButton value="start" action="index"/>
-            <p:commandButton value="main" action="main"/>
+            <p:commandButton value="Время" action="start-page"/>
         </h:form>
     </header>
 
@@ -71,63 +71,75 @@
     <div class="middle">
         <main>
             <h:form id="change-values">
-                <h:selectOneMenu title="X" converter="javax.faces.Double" value="#{pointsService.currentX}">
-                    <f:selectItem itemLabel="-4" itemValue="-4"></f:selectItem>
-                    <f:selectItem itemLabel="-3" itemValue="-3"></f:selectItem>
-                    <f:selectItem itemLabel="-2" itemValue="-2"></f:selectItem>
-                    <f:selectItem itemLabel="-1" itemValue="-1"></f:selectItem>
-                    <f:selectItem itemLabel="0" itemValue="0"></f:selectItem>
-                    <f:selectItem itemLabel="1" itemValue="1"></f:selectItem>
-                    <f:selectItem itemLabel="2" itemValue="2"></f:selectItem>
-                    <f:selectItem itemLabel="3" itemValue="3"></f:selectItem>
-                    <f:selectItem itemLabel="4" itemValue="4"></f:selectItem>
-                    <pr:ajax event="change"></pr:ajax>
-                </h:selectOneMenu>
+                <div>
+                    <h:selectOneMenu id="x-value" title="X" converter="javax.faces.Double" value="#{pointsService.currentX}">
+                        <f:selectItem itemLabel="-4" itemValue="-4"/>
+                        <f:selectItem itemLabel="-3" itemValue="-3"/>
+                        <f:selectItem itemLabel="-2" itemValue="-2"/>
+                        <f:selectItem itemLabel="-1" itemValue="-1"/>
+                        <f:selectItem itemLabel="0" itemValue="0"/>
+                        <f:selectItem itemLabel="1" itemValue="1"/>
+                        <f:selectItem itemLabel="2" itemValue="2"/>
+                        <f:selectItem itemLabel="3" itemValue="3"/>
+                        <f:selectItem itemLabel="4" itemValue="4"/>
+                        <pr:ajax event="change"/>
+                    </h:selectOneMenu>
+                </div>
 
-                <h:inputText id="y-input" title="Y" maxlength="7" a:placeholder="(-3; 3)" converter="javax.faces.Double" value="#{pointsService.currentY}">
-                    <f:validateDoubleRange  minimum="-3.0" maximum="3.0"></f:validateDoubleRange>
-                    <pr:ajax event="change" update="y-input"></pr:ajax>
-                </h:inputText>
-<!--                todo при валидации что-то вывести-->
+                <div>
+                    <h:inputText id="y-input" title="Y" maxlength="7" a:placeholder="(-3; 3)" converterMessage="Нужно ввести число." validatorMessage="Число не подходит под ограничения." converter="javax.faces.Double" value="#{pointsService.currentY}">
+                        <f:validateDoubleRange minimum="-3.0" maximum="3.0"/>
+                        <pr:ajax event="change" update="y-input message"/>
+                    </h:inputText>
+                    <h:message id="message" for="y-input" style="color:red"/>
+                </div>
 
-
-                <h:selectBooleanCheckbox styleClass="checked" title="1.0" value="#{pointsService.is1R}" onchange="selectCheckBox(this)">
-                    <pr:ajax event="change"></pr:ajax>
-                </h:selectBooleanCheckbox>
-                <label>1.0</label>
-                <h:selectBooleanCheckbox styleClass="unckecked" title="1.5" value="#{pointsService.is2R}" onchange="selectCheckBox(this)">
-                    <pr:ajax event="change"></pr:ajax>
-                </h:selectBooleanCheckbox>
-                <label>1.5</label>
-                <h:selectBooleanCheckbox styleClass="unckecked" title="2.0" value="#{pointsService.is3R}" onchange="selectCheckBox(this)">
-                    <pr:ajax event="change"></pr:ajax>
-                </h:selectBooleanCheckbox>
-                <label>2.0</label>
-                <h:selectBooleanCheckbox styleClass="unckecked" title="2.5" value="#{pointsService.is4R}" onchange="selectCheckBox(this)">
-                    <pr:ajax event="change"></pr:ajax>
-                </h:selectBooleanCheckbox>
-                <label>2.5</label>
-                <h:selectBooleanCheckbox styleClass="unckecked" title="3.0" value="#{pointsService.is5R}" onchange="selectCheckBox(this)">
-                    <pr:ajax event="change"></pr:ajax>
-                </h:selectBooleanCheckbox>
-                <label>3.0</label>
+                <div>
+                    <h:selectBooleanCheckbox styleClass="r-checkbox" title="1.0" value="#{pointsService.is1R}" onchange="selectCheckBox(this)">
+                        <pr:ajax event="change"></pr:ajax>
+                    </h:selectBooleanCheckbox>
+                    <label>1.0</label>
+                    <h:selectBooleanCheckbox styleClass="r-checkbox" title="1.5" value="#{pointsService.is2R}" onchange="selectCheckBox(this)">
+                        <pr:ajax event="change"></pr:ajax>
+                    </h:selectBooleanCheckbox>
+                    <label>1.5</label>
+                    <h:selectBooleanCheckbox styleClass="r-checkbox" title="2.0" value="#{pointsService.is3R}" onchange="selectCheckBox(this)">
+                        <pr:ajax event="change"></pr:ajax>
+                    </h:selectBooleanCheckbox>
+                    <label>2.0</label>
+                    <h:selectBooleanCheckbox styleClass="r-checkbox" title="2.5" value="#{pointsService.is4R}" onchange="selectCheckBox(this)">
+                        <pr:ajax event="change"></pr:ajax>
+                    </h:selectBooleanCheckbox>
+                    <label>2.5</label>
+                    <h:selectBooleanCheckbox styleClass="r-checkbox" title="3.0" value="#{pointsService.is5R}" onchange="selectCheckBox(this)">
+                        <pr:ajax event="change"></pr:ajax>
+                    </h:selectBooleanCheckbox>
+                    <label>3.0</label>
+                </div>
             </h:form>
 
             <h:form id="check-form">
                 <h:commandButton value="Проверить" action="#{pointsService.addPoint()}">
-                    <f:ajax execute="check-form" render="table-result"/>
+                    <f:ajax execute="check-form" render="table-result" onevent="updateSvg"/>
                 </h:commandButton>
             </h:form>
 
             <h:form id="delete-form">
                 <h:commandButton value="Очистить" action="#{pointsService.clear}">
-                    <f:ajax execute="delete-form" render="table-result"/>
+                    <f:ajax execute="delete-form" render="table-result" onevent="updateSvg"/>
+                </h:commandButton>
+            </h:form>
+
+            <h:form id="check-form-invisible" style="display: none;">
+                <h:inputHidden id="x-value-click" converter="javax.faces.Double" value="#{pointsService.clickX}"/>
+                <h:inputHidden id="y-value-click" converter="javax.faces.Double" value="#{pointsService.clickY}"/>
+                <h:commandButton id="button-invisible" action="#{pointsService.addClickedPoint}">
+                    <f:ajax execute="check-form-invisible" render="table-result" onevent="updateSvg"/>
                 </h:commandButton>
             </h:form>
         </main>
 
         <aside class="right">
-
             <h:dataTable id="table-result" value="#{pointsService.getPoints()}" var="point">
                 <h:column>
                     <f:facet name="header">X</f:facet>

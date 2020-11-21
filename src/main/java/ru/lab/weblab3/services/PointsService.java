@@ -18,6 +18,9 @@ public class PointsService {
     private Double currentX;
     private Double currentY;
 
+    private Double clickX;
+    private Double clickY;
+
     private Boolean is1R;
     private Boolean is2R;
     private Boolean is3R;
@@ -33,10 +36,18 @@ public class PointsService {
         pointsDAO = new PointDAOImpl();
         pointFactory = PointFactory.getInstance(new Field());
         rValues = Arrays.asList(1.0, 1.5, 2.0, 2.5, 3.0);
+
+        currentX = -4.0;
+        is1R = true;
     }
 
     public void addPoint() {
         Point point = pointFactory.buildPoint(currentX, currentY, getCurrentR());
+        pointsDAO.addPoint(point);
+    }
+
+    public void addClickedPoint() {
+        Point point = pointFactory.buildPoint(clickX, clickY, getCurrentR());
         pointsDAO.addPoint(point);
     }
 
@@ -62,6 +73,22 @@ public class PointsService {
 
     public Double getCurrentY() {
         return currentY;
+    }
+
+    public Double getClickX() {
+        return clickX;
+    }
+
+    public void setClickX(Double clickX) {
+        this.clickX = clickX;
+    }
+
+    public Double getClickY() {
+        return clickY;
+    }
+
+    public void setClickY(Double clickY) {
+        this.clickY = clickY;
     }
 
     private Double getCurrentR() {
