@@ -1,7 +1,7 @@
 package ru.lab.weblab3.services;
 
-import ru.lab.weblab3.models.dao.impls.PointDAOImpl;
 import ru.lab.weblab3.models.dao.PointsDAO;
+import ru.lab.weblab3.models.dao.impls.PointsDAOImpl;
 import ru.lab.weblab3.models.entities.Point;
 import ru.lab.weblab3.services.checkers.Field;
 import ru.lab.weblab3.services.factories.PointFactory;
@@ -33,7 +33,7 @@ public class PointsService {
 
 
     public PointsService() {
-        pointsDAO = new PointDAOImpl();
+        pointsDAO = PointsDAOImpl.getInstance();
         pointFactory = PointFactory.getInstance(new Field());
         rValues = Arrays.asList(1.0, 1.5, 2.0, 2.5, 3.0);
 

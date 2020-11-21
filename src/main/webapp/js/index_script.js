@@ -40,9 +40,6 @@ function buildClickRequest(x, y) {
     y = Number(y);
     x = x * r;
     y = y * r;
-    console.log("x: " + x);
-    console.log("y: " + y);
-    console.log("r: " + r);
     document.getElementById('check-form-invisible:x-value-click').value = x;
     document.getElementById('check-form-invisible:y-value-click').value = y;
     $("#check-form-invisible\\:button-invisible").click();

@@ -4,11 +4,30 @@ import org.hibernate.Session;
 import org.hibernate.Transaction;
 import ru.lab.weblab3.models.dao.PointsDAO;
 import ru.lab.weblab3.models.entities.Point;
+import ru.lab.weblab3.services.checkers.HitChecker;
 import ru.lab.weblab3.services.factories.HibernateSessionFactory;
 
 import java.util.List;
 
-public class PointDAOImpl implements PointsDAO { //todo мб тоже синглтон
+public class PointsDAOImpl implements PointsDAO {
+    private static volatile PointsDAO instance;
+
+    private PointsDAOImpl() {
+    }
+
+    public static PointsDAO getInstance() {
+        PointsDAO result = instance;
+        if (result != null) {
+            return result;
+        }
+        synchronized(PointsDAOImpl.class) {
+            if (instance == null) {
+                instance = new PointsDAOImpl();
+            }
+            return instance;
+        }
+    }
+
     @Override
     public void addPoint(Point point) {
         Session session = HibernateSessionFactory.getSessionFactory().openSession();

@@ -3,8 +3,8 @@ package ru.lab.weblab3.services.factories;
 import ru.lab.weblab3.models.entities.Point;
 import ru.lab.weblab3.services.checkers.HitChecker;
 
-public class PointFactory { //todo EJB
-    private static PointFactory instance;
+public class PointFactory {
+    private static volatile PointFactory instance;
 
     private final HitChecker field;
 
@@ -13,10 +13,16 @@ public class PointFactory { //todo EJB
     }
 
     public static PointFactory getInstance(HitChecker field) {
-        if (instance == null) {
-            instance = new PointFactory(field);
+        PointFactory result = instance;
+        if (result != null) {
+            return result;
         }
-        return instance;
+        synchronized(PointFactory.class) {
+            if (instance == null) {
+                instance = new PointFactory(field);
+            }
+            return instance;
+        }
     }
 
     public Point buildPoint(Double x, Double y, Double r) {

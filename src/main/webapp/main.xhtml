@@ -114,7 +114,7 @@
 
                 <div class="labels">Y</div>
                 <div>
-                    <h:inputText styleClass="field" id="y-input" title="Y" maxlength="7" a:placeholder="(-3; 3)" converterMessage="Нужно ввести число." validatorMessage="Число не подходит под ограничения." converter="javax.faces.Double" value="#{pointsService.currentY}">
+                    <h:inputText styleClass="field" id="y-input" title="Y" maxlength="7" a:placeholder="[-3; 3]" converterMessage="Нужно ввести число." validatorMessage="Число не подходит под ограничения." converter="javax.faces.Double" value="#{pointsService.currentY}">
                         <f:validateDoubleRange minimum="-3.0" maximum="3.0"/>
                         <pr:ajax event="change" update="y-input message"/>
                     </h:inputText>
