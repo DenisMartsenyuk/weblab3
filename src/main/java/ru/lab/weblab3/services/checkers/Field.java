@@ -11,7 +11,7 @@ public final class Field implements HitChecker {
             return true;
         }
 
-        if(x >= 0 && y <= 0 && (y * y <= (r - x) * (r - x))) {
+        if(x >= 0 && y <= 0 && (y * y <= (r - x) * (r - x))) { //todo проверить
             return true;
         }
 

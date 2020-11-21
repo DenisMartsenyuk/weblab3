@@ -1,0 +1,79 @@
+@import "fonts.css";
+
+:root {
+    font-size: 16px;
+    font-family: Roboto-Regular, sans-serif;
+
+    --border-color: rgb(185, 185, 185);
+    --border: 1px solid var(--color1);
+    --border-radius: 6px;
+    --color1: #32d4e2;
+    --color2: #47A1AA;
+    --color3: #EDFEFF;
+    --dark-color: rgb(30, 30, 30);
+    --height: 22rem;
+}
+
+html {
+    min-width: 800px;
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+header {
+    text-align: center;
+    margin-top: 1rem;
+    margin-bottom: 1rem;
+    border-bottom: var(--border);
+}
+
+footer {
+    margin-top: 3rem;
+    padding-top: 1rem;
+    border-top: var(--border);
+    text-align: center;
+}
+
+h1 {
+    font-size: 28px;
+    font-family: Roboto-Italic, sans-serif;
+}
+
+.center {
+    text-align: center;
+}
+
+.labels {
+    margin-top: 3rem;
+    margin-bottom: 3rem;
+}
+
+.time {
+    font-size: 62px;
+}
+
+.button {
+    color: #232323;
+    background: transparent;
+    border: 1px solid #232323;
+    border-radius: 4px;
+    position: relative;
+    letter-spacing: .1em;
+    font-size: 20px;
+    font-family: Roboto-Italic, sans-serif;
+    padding: 13px 39px 13px 39px;
+    cursor: pointer;
+}
+
+.button:hover {
+    color: #47A1AA;
+    background: transparent;
+    border: 1px solid #47A1AA;
+    position: relative;
+    letter-spacing: .1em;
+    font-size: 20px;
+    font-family: Roboto-Italic, sans-serif;
+    padding: 13px 39px 13px 39px;
+    cursor: pointer;
+}
+

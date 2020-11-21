@@ -1,0 +1,25 @@
+@font-face {
+    font-family: 'Roboto-Regular';
+    src: url('../fonts/Roboto-Regular.eot');
+    src: local('☺'), url('../fonts/Roboto-Regular.woff') format('woff'), url('../fonts/Roboto-Regular.ttf') format('truetype'), url('../fonts/Roboto-Regular.svg') format('svg');
+    font-weight: normal;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: 'Roboto-BlackItalic';
+    src: url('../fonts/Roboto-BlackItalic.eot');
+    src: local('☺'), url('../fonts/Roboto-BlackItalic.woff') format('woff'), url('../fonts/Roboto-BlackItalic.ttf') format('truetype'), url('../fonts/Roboto-BlackItalic.svg') format('svg');
+    font-weight: normal;
+    font-style: normal;
+}
+
+
+
+@font-face {
+    font-family: 'Roboto-Italic';
+    src: url('../fonts/Roboto-Italic.eot');
+    src: local('☺'), url('../fonts/Roboto-Italic.woff') format('woff'), url('../fonts/Roboto-Italic.ttf') format('truetype'), url('../fonts/Roboto-Italic.svg') format('svg');
+    font-weight: normal;
+    font-style: normal;
+}

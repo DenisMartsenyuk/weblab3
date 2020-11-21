@@ -11,68 +11,94 @@
     <title>Основная страница</title>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
     <script src="js/index_script.js"></script>
-    <link rel="stylesheet" href="css/style.css" type="text/css"></link>
+    <link rel="stylesheet" href="css/main_style.css" type="text/css"/>
 </h:head>
 
 <h:body>
     <header>
-        <h1>Лабораторная работа №2. Вариант: 4577.</h1>
-        <h:form>
-            <p:commandButton value="Время" action="start-page"/>
-        </h:form>
+        <h1>Лабораторная работа №3. Вариант: 5177.</h1>
     </header>
 
-    <aside class="left">
-        <svg onclick="clickSvg(evt)" width="300" height="300" xmlns="http://www.w3.org/2000/svg">
-
-            <path  class="figures" d="M 250 150 A 100 100, 90, 0, 0, 150 50 L 150 150 Z" fill="#32D4E2" fill-opacity="0.3" stroke="#32D4E2"></path>
-            <polygon class="figures" points="50,50 150,50 150,150, 50,150" fill="#32D4E2" fill-opacity="0.3" stroke="#32D4E2"></polygon>
-            <polygon class="figures" points="150,150 250,150 150,250" fill="#32D4E2" fill-opacity="0.3" stroke="#32D4E2"></polygon>
-
-
-            <line x1="0" x2="300" y1="150" y2="150" stroke="black"></line>
-            <line x1="150" x2="150" y1="0" y2="300" stroke="black"></line>
-            <polygon points="150,0 144,15 156,15" stroke="black"></polygon>
-            <polygon points="300,150 285,156 285,144" stroke="black"></polygon>
-
-            <line x1="200" x2="200" y1="155" y2="145" stroke="black"></line>
-            <line x1="250" x2="250" y1="155" y2="145" stroke="black"></line>
-
-            <line x1="50"  x2="50"  y1="155" y2="145" stroke="black"></line>
-            <line x1="100" x2="100" y1="155" y2="145" stroke="black"></line>
-
-            <line x1="145" x2="155" y1="100" y2="100" stroke="black"></line>
-            <line x1="145" x2="155" y1="50"  y2="50"  stroke="black"></line>
-
-            <line x1="145" x2="155" y1="200" y2="200" stroke="black"></line>
-            <line x1="145" x2="155" y1="250" y2="250" stroke="black"></line>
-
-            <text x="195" y="140">R/2</text>
-            <text x="248" y="140">R</text>
-
-            <text x="40" y="140">-R</text>
-            <text x="90" y="140">-R/2</text>
-
-            <text x="160" y="105">R/2</text>
-            <text x="160" y="55">R</text>
-
-            <text x="160" y="205">-R/2</text>
-            <text x="160" y="255">-R</text>
-
-            <g id="point-storage">
-
-            </g>
-
-            <polygon points="0,0 0,300 300,300, 300,0" opacity="0"></polygon>
-
-        </svg>
-    </aside>
-
     <div class="middle">
-        <main>
+        <aside class="right">
+            <section>
+                <div class="scroll-table">
+                    <h:dataTable id="table-result" value="#{pointsService.getPoints()}" var="point">
+                        <h:column>
+                            <f:facet name="header">X</f:facet>
+                            #{point.x}
+                        </h:column>
+                        <h:column>
+                            <f:facet name="header">Y</f:facet>
+                            #{point.y}
+                        </h:column>
+                        <h:column>
+                            <f:facet name="header">R</f:facet>
+                            #{point.r}
+                        </h:column>
+                        <h:column>
+                            <f:facet name="header">HIT</f:facet>
+                            #{point.hit}
+                        </h:column>
+                    </h:dataTable>
+                </div>
+            </section>
+        </aside>
+
+        <aside class="left">
+            <section>
+                <svg onclick="clickSvg(evt)" id="graph" xmlns="http://www.w3.org/2000/svg">
+
+                    <path  class="figures" d="M 250 150 A 100 100, 90, 0, 0, 150 50 L 150 150 Z"/>
+                    <polygon class="figures" points="50,50 150,50 150,150, 50,150"/>
+                    <polygon class="figures" points="150,150 250,150 150,250"/>
+
+
+                    <line x1="0" x2="300" y1="150" y2="150" class="axis"/>
+                    <line x1="150" x2="150" y1="0" y2="300" class="axis"/>
+                    <polygon points="150,0 144,15 156,15" class="axis"/>
+                    <polygon points="300,150 285,156 285,144" class="axis"/>
+
+                    <line x1="200" x2="200" y1="155" y2="145" class="axis"/>
+                    <line x1="250" x2="250" y1="155" y2="145" class="axis"/>
+
+                    <line x1="50"  x2="50"  y1="155" y2="145" class="axis"/>
+                    <line x1="100" x2="100" y1="155" y2="145" class="axis"/>
+
+                    <line x1="145" x2="155" y1="100" y2="100" class="axis"/>
+                    <line x1="145" x2="155" y1="50"  y2="50"  class="axis"/>
+
+                    <line x1="145" x2="155" y1="200" y2="200" class="axis"/>
+                    <line x1="145" x2="155" y1="250" y2="250" class="axis"/>
+
+                    <text x="195" y="140">R/2</text>
+                    <text x="248" y="140">R</text>
+
+                    <text x="40" y="140">-R</text>
+                    <text x="90" y="140">-R/2</text>
+
+                    <text x="160" y="105">R/2</text>
+                    <text x="160" y="55">R</text>
+
+                    <text x="160" y="205">-R/2</text>
+                    <text x="160" y="255">-R</text>
+
+                    <g id="point-storage">
+
+                    </g>
+                    <polygon points="0,0 0,300 300,300, 300,0" opacity="0"></polygon>
+
+                </svg>
+            </section>
+        </aside>
+    </div>
+
+    <main>
+        <div class="main-body">
             <h:form id="change-values">
+                <div class="labels">X</div>
                 <div>
-                    <h:selectOneMenu id="x-value" title="X" converter="javax.faces.Double" value="#{pointsService.currentX}">
+                    <h:selectOneMenu styleClass="select-item" id="x-value" title="X" converter="javax.faces.Double" value="#{pointsService.currentX}">
                         <f:selectItem itemLabel="-4" itemValue="-4"/>
                         <f:selectItem itemLabel="-3" itemValue="-3"/>
                         <f:selectItem itemLabel="-2" itemValue="-2"/>
@@ -86,14 +112,18 @@
                     </h:selectOneMenu>
                 </div>
 
+                <div class="labels">Y</div>
                 <div>
-                    <h:inputText id="y-input" title="Y" maxlength="7" a:placeholder="(-3; 3)" converterMessage="Нужно ввести число." validatorMessage="Число не подходит под ограничения." converter="javax.faces.Double" value="#{pointsService.currentY}">
+                    <h:inputText styleClass="field" id="y-input" title="Y" maxlength="7" a:placeholder="(-3; 3)" converterMessage="Нужно ввести число." validatorMessage="Число не подходит под ограничения." converter="javax.faces.Double" value="#{pointsService.currentY}">
                         <f:validateDoubleRange minimum="-3.0" maximum="3.0"/>
                         <pr:ajax event="change" update="y-input message"/>
                     </h:inputText>
-                    <h:message id="message" for="y-input" style="color:red"/>
+                    <div>
+                        <h:message id="message" for="y-input" style="color:red"/>
+                    </div>
                 </div>
 
+                <div class="labels">R</div>
                 <div>
                     <h:selectBooleanCheckbox styleClass="r-checkbox" title="1.0" value="#{pointsService.is1R}" onchange="selectCheckBox(this)">
                         <pr:ajax event="change"></pr:ajax>
@@ -118,16 +148,20 @@
                 </div>
             </h:form>
 
-            <h:form id="check-form">
-                <h:commandButton value="Проверить" action="#{pointsService.addPoint()}">
+            <h:form id="check-form" styleClass="god-button">
+                <h:commandButton styleClass="god-button button" value="Проверить" action="#{pointsService.addPoint()}">
                     <f:ajax execute="check-form" render="table-result" onevent="updateSvg"/>
                 </h:commandButton>
             </h:form>
 
             <h:form id="delete-form">
-                <h:commandButton value="Очистить" action="#{pointsService.clear}">
+                <h:commandButton styleClass="god-button button" value="Очистить" action="#{pointsService.clear}">
                     <f:ajax execute="delete-form" render="table-result" onevent="updateSvg"/>
                 </h:commandButton>
+            </h:form>
+
+            <h:form>
+                <p:commandButton styleClass=" god-button button" value="Самобичевание" action="start-page"/>
             </h:form>
 
             <h:form id="check-form-invisible" style="display: none;">
@@ -137,28 +171,11 @@
                     <f:ajax execute="check-form-invisible" render="table-result" onevent="updateSvg"/>
                 </h:commandButton>
             </h:form>
-        </main>
+        </div>
+    </main>
 
-        <aside class="right">
-            <h:dataTable id="table-result" value="#{pointsService.getPoints()}" var="point">
-                <h:column>
-                    <f:facet name="header">X</f:facet>
-                    #{point.x}
-                </h:column>
-                <h:column>
-                    <f:facet name="header">Y</f:facet>
-                    #{point.y}
-                </h:column>
-                <h:column>
-                    <f:facet name="header">R</f:facet>
-                    #{point.r}
-                </h:column>
-                <h:column>
-                    <f:facet name="header">HIT</f:facet>
-                    #{point.hit}
-                </h:column>
-            </h:dataTable>
-        </aside>
-    </div>
+    <footer>
+        <a href="https://github.com/DenisMartsenyuk/weblab1">by Martsenyuk Denis</a>
+    </footer>
 </h:body>
 </html>

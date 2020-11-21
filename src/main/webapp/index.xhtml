@@ -9,29 +9,38 @@
 
 <h:head>
     <title>Стартовая страница</title>
+    <link rel="stylesheet" href="css/index_style.css" type="text/css"/>
 </h:head>
 
 <h:body>
     <header>
-        <h1>Лабораторная работа №2. Вариант: 4577.</h1>
+        <h1>Лабораторная работа №3. Вариант: 5177.</h1>
     </header>
     <main>
         <h:form>
-            <h4>Что тут у нас? Сегодня значит: </h4>
-            <h:outputText id="date" value="#{time}">
-                <f:convertDateTime pattern="dd.MM.yyyy"/>
-            </h:outputText>
-            <h4>Время уже</h4>
-            <h:outputText id="time" value="#{time}">
-                <f:convertDateTime pattern="HH:mm:ss" timeZone="Europe/Moscow"/>
-            </h:outputText>
-            <h4>Мда, а ты еще не сдал третью лабу по ПИПу...</h4>
+            <h3 class="center labels">Что тут у нас? Сегодня значит: </h3>
+            <div class="center">
+                <h:outputText styleClass="time" id="date" value="#{time}">
+                    <f:convertDateTime pattern="dd.MM.yyyy"/>
+                </h:outputText>
+            </div>
+            <h3 class="center labels">Время уже</h3>
+            <div class="center">
+                <h:outputText styleClass="time" id="time" value="#{time}">
+                    <f:convertDateTime pattern="HH:mm" timeZone="Europe/Moscow"/>
+                </h:outputText>
+            </div>
+            <h3 class="center labels">Мда, а ты еще не сдал третью лабу по ПИПу...</h3>
             <pr:poll interval="7" update="date time"/>
         </h:form>
 
-        <h:form>
-            <p:commandButton value="Туда, где можно что-то потыкать" action="main-page"/>
+        <h:form styleClass="center">
+            <p:commandButton styleClass="button" value="Туда, где можно что-то потыкать" action="main-page"/>
         </h:form>
     </main>
+
+    <footer>
+        <a href="https://github.com/DenisMartsenyuk/weblab1">by Martsenyuk Denis</a>
+    </footer>
 </h:body>
 </html>

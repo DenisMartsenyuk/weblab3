@@ -54,24 +54,6 @@ function updateSvg(data) {
     //todo как решить ajaxom...
 }
 
-// function getPoints() {
-//     let res = [];
-//     let entriesNodes = document.getElementById("entries_table_data").childNodes;
-//     for (let i = 0; i < entriesNodes.length; i++) {
-//         let values = entriesNodes[i].childNodes;
-//         if (values.length === 1) {
-//             continue;
-//         }
-//         res.push({
-//             x: values[1].innerText,
-//             y: values[2].innerText,
-//             r: values[3].innerText,
-//             result: values[4].innerText
-//         })
-//     }
-//     return res;
-// }
-
 
 function drawPoints() {
     console.log("drawing");
