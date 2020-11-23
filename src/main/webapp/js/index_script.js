@@ -35,7 +35,7 @@ function clickSvg(evt) {
 
 function buildClickRequest(x, y) {
     let r = $('.checked').attr("title");
-    console.log(r + " r");
+    // console.log(r + " r");
     x = Number(x);
     y = Number(y);
     x = x * r;
@@ -51,20 +51,37 @@ function updateSvg(data) {
     //todo как решить ajaxom...
 }
 
+function getPoints() {
+    let points = [];
+    let pointsNodes = document.getElementById("table-result_data").childNodes;
+    for (let i = 0; i < pointsNodes.length; i++) {
+        let values = pointsNodes[i].childNodes;
+        if (values.length !== 4) {
+            continue;
+        }
+        points.push({
+            x: values[0].innerText,
+            y: values[1].innerText,
+            r: values[2].innerText,
+            hit: values[3].innerText
+        });
+    }
+    return points;
+}
+
 
 function drawPoints() {
     console.log("drawing");
     let value = $('.checked').attr("title");
-    let table = document.querySelector('#table-result');
+    let points = getPoints();
     let group = document.getElementById("point-storage");
-    let points = "";
-    for (let i = 1; i < table.rows.length; i++) {
-        if (Number(table.rows[i].cells[2].textContent) === Number(value)) { //table.rows[i].cells[3].textContent === "true" &&
-            points = points + getDescriptionPoint(Number(table.rows[i].cells[0].textContent), Number(table.rows[i].cells[1].textContent), Number(table.rows[i].cells[2].textContent), table.rows[i].cells[3].textContent);
-
+    let pointsResult = "";
+    for (let i = 0; i < points.length; i++) {
+        if (Number(points[i].r) === Number(value)) {
+            pointsResult = pointsResult + getDescriptionPoint(Number(points[i].x), Number(points[i].y), Number(points[i].r), points[i].hit);
         }
     }
-    group.innerHTML = points;
+    group.innerHTML = pointsResult;
 }
 
 function getDescriptionPoint(x, y, r, hit) {
@@ -73,7 +90,6 @@ function getDescriptionPoint(x, y, r, hit) {
     r = Number(r);
     x = 150.0 + x * 100.0 / r;
     y = 150.0 - y * 100.0 / r;
-    hit = hit.replace(/\s+/g, "");
     let pointType;
     if (hit === "true") {
         pointType = "hit";

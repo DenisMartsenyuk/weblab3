@@ -23,24 +23,24 @@
         <aside class="right">
             <section>
                 <div class="scroll-table">
-                    <h:dataTable id="table-result" value="#{pointsService.getPoints()}" var="point">
-                        <h:column>
+                    <pr:dataTable id="table-result" value="#{pointsService.getPoints()}" var="point">
+                        <pr:column>
                             <f:facet name="header">X</f:facet>
                             #{point.x}
-                        </h:column>
-                        <h:column>
+                        </pr:column>
+                        <pr:column>
                             <f:facet name="header">Y</f:facet>
                             #{point.y}
-                        </h:column>
-                        <h:column>
+                        </pr:column>
+                        <pr:column>
                             <f:facet name="header">R</f:facet>
                             #{point.r}
-                        </h:column>
-                        <h:column>
+                        </pr:column>
+                        <pr:column>
                             <f:facet name="header">HIT</f:facet>
                             #{point.hit}
-                        </h:column>
-                    </h:dataTable>
+                        </pr:column>
+                    </pr:dataTable>
                 </div>
             </section>
         </aside>
@@ -126,51 +126,38 @@
                 <div class="labels">R</div>
                 <div>
                     <h:selectBooleanCheckbox styleClass="r-checkbox" title="1.0" value="#{pointsService.is1R}" onchange="selectCheckBox(this)">
-                        <pr:ajax event="change"></pr:ajax>
+<!--                        <pr:ajax event="change"></pr:ajax>-->
                     </h:selectBooleanCheckbox>
                     <label>1.0</label>
                     <h:selectBooleanCheckbox styleClass="r-checkbox" title="1.5" value="#{pointsService.is2R}" onchange="selectCheckBox(this)">
-                        <pr:ajax event="change"></pr:ajax>
+<!--                        <pr:ajax event="change"></pr:ajax>-->
                     </h:selectBooleanCheckbox>
                     <label>1.5</label>
                     <h:selectBooleanCheckbox styleClass="r-checkbox" title="2.0" value="#{pointsService.is3R}" onchange="selectCheckBox(this)">
-                        <pr:ajax event="change"></pr:ajax>
+<!--                        <pr:ajax event="change"></pr:ajax>-->
                     </h:selectBooleanCheckbox>
                     <label>2.0</label>
                     <h:selectBooleanCheckbox styleClass="r-checkbox" title="2.5" value="#{pointsService.is4R}" onchange="selectCheckBox(this)">
-                        <pr:ajax event="change"></pr:ajax>
+<!--                        <pr:ajax event="change"></pr:ajax>-->
                     </h:selectBooleanCheckbox>
                     <label>2.5</label>
-                    <h:selectBooleanCheckbox styleClass="r-checkbox" title="3.0" value="#{pointsService.is5R}" onchange="selectCheckBox(this)">
-                        <pr:ajax event="change"></pr:ajax>
-                    </h:selectBooleanCheckbox>
+                    <h:selectBooleanCheckbox styleClass="r-checkbox" title="3.0" value="#{pointsService.is5R}" onchange="selectCheckBox(this)"/>
                     <label>3.0</label>
                 </div>
             </h:form>
 
-            <h:form id="check-form" styleClass="god-button">
-                <h:commandButton styleClass="god-button button" value="Проверить" action="#{pointsService.addPoint()}">
-                    <f:ajax execute="check-form" render="table-result" onevent="updateSvg"/>
-                </h:commandButton>
-            </h:form>
-
-            <h:form id="delete-form">
-                <h:commandButton styleClass="god-button button" value="Очистить" action="#{pointsService.clear}">
-                    <f:ajax execute="delete-form" render="table-result" onevent="updateSvg"/>
-                </h:commandButton>
-            </h:form>
-
             <h:form>
+                <pr:commandButton value="Проверить" styleClass="god-button" update="table-result" action="#{pointsService.addPoint()}" oncomplete="drawPoints();"/>
+                <pr:commandButton value="Очистить" styleClass="god-button" update="table-result" action="#{pointsService.clear()}" oncomplete="drawPoints();"/>
                 <p:commandButton styleClass=" god-button button" value="Самобичевание" action="start-page"/>
             </h:form>
 
             <h:form id="check-form-invisible" style="display: none;">
                 <h:inputHidden id="x-value-click" converter="javax.faces.Double" value="#{pointsService.clickX}"/>
                 <h:inputHidden id="y-value-click" converter="javax.faces.Double" value="#{pointsService.clickY}"/>
-                <h:commandButton id="button-invisible" action="#{pointsService.addClickedPoint}">
-                    <f:ajax execute="check-form-invisible" render="table-result" onevent="updateSvg"/>
-                </h:commandButton>
+                <pr:commandButton id="button-invisible" update="table-result" action="#{pointsService.addClickedPoint()}" oncomplete="drawPoints();"/>
             </h:form>
+
         </div>
     </main>
 
