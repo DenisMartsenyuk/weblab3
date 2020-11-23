@@ -125,23 +125,29 @@
 
                 <div class="labels">R</div>
                 <div>
-                    <h:selectBooleanCheckbox styleClass="r-checkbox" title="1.0" value="#{pointsService.is1R}" onchange="selectCheckBox(this)">
-<!--                        <pr:ajax event="change"></pr:ajax>-->
+                    <h:selectBooleanCheckbox styleClass="r-checkbox" title="1.0" value="#{pointsService.is1R}" onclick="selectCheckBox(this)">
+                        <pr:ajax event="change"/>
                     </h:selectBooleanCheckbox>
                     <label>1.0</label>
-                    <h:selectBooleanCheckbox styleClass="r-checkbox" title="1.5" value="#{pointsService.is2R}" onchange="selectCheckBox(this)">
-<!--                        <pr:ajax event="change"></pr:ajax>-->
+
+                    <h:selectBooleanCheckbox styleClass="r-checkbox" title="1.5" value="#{pointsService.is2R}" onclick="selectCheckBox(this)">
+                        <pr:ajax event="change"/>
                     </h:selectBooleanCheckbox>
                     <label>1.5</label>
-                    <h:selectBooleanCheckbox styleClass="r-checkbox" title="2.0" value="#{pointsService.is3R}" onchange="selectCheckBox(this)">
-<!--                        <pr:ajax event="change"></pr:ajax>-->
+
+                    <h:selectBooleanCheckbox styleClass="r-checkbox" title="2.0" value="#{pointsService.is3R}" onclick="selectCheckBox(this)">
+                        <pr:ajax event="change"/>
                     </h:selectBooleanCheckbox>
                     <label>2.0</label>
-                    <h:selectBooleanCheckbox styleClass="r-checkbox" title="2.5" value="#{pointsService.is4R}" onchange="selectCheckBox(this)">
-<!--                        <pr:ajax event="change"></pr:ajax>-->
+
+                    <h:selectBooleanCheckbox styleClass="r-checkbox" title="2.5" value="#{pointsService.is4R}" onclick="selectCheckBox(this)">
+                        <pr:ajax event="change"/>
                     </h:selectBooleanCheckbox>
                     <label>2.5</label>
-                    <h:selectBooleanCheckbox styleClass="r-checkbox" title="3.0" value="#{pointsService.is5R}" onchange="selectCheckBox(this)"/>
+
+                    <h:selectBooleanCheckbox styleClass="r-checkbox" title="3.0" value="#{pointsService.is5R}" onclick="selectCheckBox(this)">
+                        <pr:ajax event="change"/>
+                    </h:selectBooleanCheckbox>
                     <label>3.0</label>
                 </div>
             </h:form>

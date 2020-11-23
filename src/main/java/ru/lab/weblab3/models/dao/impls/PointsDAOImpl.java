@@ -29,21 +29,23 @@ public class PointsDAOImpl implements PointsDAO {
     }
 
     @Override
-    public void addPoint(Point point) {
+    public Point addPoint(Point point) {
         Session session = HibernateSessionFactory.getSessionFactory().openSession();
         Transaction tx1 = session.beginTransaction();
         session.save(point);
         tx1.commit();
         session.close();
+        return point;
     }
 
     @Override
-    public void clear() {
+    public Boolean clear() {
         Session session = HibernateSessionFactory.getSessionFactory().openSession();
         Transaction tx1 = session.beginTransaction();
         session.createQuery("delete from Point").executeUpdate(); //todo перейти от запроса к jpa  и аннотация Transaction
         tx1.commit();
         session.close();
+        return true;
     }
 
     @Override
