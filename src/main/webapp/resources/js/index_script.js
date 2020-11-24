@@ -45,12 +45,6 @@ function buildClickRequest(x, y) {
     $("#check-form-invisible\\:button-invisible").click();
 }
 
-function updateSvg(data) {
-    //sleep(100);
-    drawPoints();
-    //todo как решить ajaxom...
-}
-
 function getPoints() {
     let points = [];
     let pointsNodes = document.getElementById("table-result_data").childNodes;

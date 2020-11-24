@@ -38,11 +38,11 @@ public class PointsView {
         rValues = Arrays.asList(1.0, 1.5, 2.0, 2.5, 3.0);
 
         currentX = -4.0;
+        currentY = 0.0;
         is1R = true;
     }
 
     public void addPoint() {
-        System.out.println(10/0);
         Point point = pointFactory.buildPoint(currentX, currentY, getCurrentR());
         pointsDAO.addPoint(point);
     }

@@ -3,16 +3,11 @@
 <html xmlns="http://www.w3.org/1999/xhtml"
       xmlns:h="http://xmlns.jcp.org/jsf/html"
       xmlns:f="http://xmlns.jcp.org/jsf/core"
-      xmlns:p="http://java.sun.com/jsf/html"
       xmlns:a="http://xmlns.jcp.org/jsf/passthrough"
       xmlns:pr="http://primefaces.org/ui">
 <h:head>
     <title>Основная страница</title>
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
-    <script src="js/index_script.js"></script>
-    <link rel="stylesheet" href="css/main_style.css" type="text/css"/>
-
-    <!--    todo поменять ссылки-->
+    <link rel="stylesheet" href="resources/css/main_style.css" type="text/css"/>
 </h:head>
 
 <h:body>
@@ -115,7 +110,7 @@
 
                 <div class="labels">Y</div>
                 <div>
-                    <h:inputText styleClass="field" id="y-input" title="Y" maxlength="7" a:placeholder="[-3; 3]" converterMessage="Нужно ввести число." validatorMessage="Число не подходит под ограничения." converter="javax.faces.Double" value="#{pointsView.currentY}">
+                    <h:inputText styleClass="field" id="y-input" title="Y" maxlength="7" a:placeholder="[-3; 3]" validator="" converterMessage="Нужно ввести число." validatorMessage="Число не подходит под ограничения [-3;3]." converter="javax.faces.Double" value="#{pointsView.currentY}">
                         <f:validateDoubleRange minimum="-3.0" maximum="3.0"/>
                         <pr:ajax event="change" update="y-input message"/>
                     </h:inputText>
@@ -157,7 +152,6 @@
                 <pr:commandButton value="Проверить" styleClass="god-button button" update="table-result" action="#{pointsView.addPoint()}" oncomplete="drawPoints();"/>
                 <pr:commandButton value="Очистить" styleClass="god-button button" update="table-result" action="#{pointsView.clear()}" oncomplete="drawPoints();"/>
                 <pr:commandButton styleClass="god-button button" value="Самобичевание" action="start-page"/>
-                <h:commandButton action="#{pointsView.addPoint()}"></h:commandButton>
             </h:form>
 
             <h:form id="check-form-invisible" style="display: none;">
@@ -172,5 +166,8 @@
     <footer>
         <a href="https://github.com/DenisMartsenyuk/weblab1">by Martsenyuk Denis</a>
     </footer>
+
+    <h:outputScript library="js" name="index_script.js"/>
+    <h:outputScript library="js" name="jquery.js"/>
 </h:body>
 </html>
