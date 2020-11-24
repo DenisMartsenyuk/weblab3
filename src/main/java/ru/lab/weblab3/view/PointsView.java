@@ -1,4 +1,4 @@
-package ru.lab.weblab3.services;
+package ru.lab.weblab3.view;
 
 import ru.lab.weblab3.models.dao.PointsDAO;
 import ru.lab.weblab3.models.dao.impls.PointsDAOImpl;
@@ -6,14 +6,14 @@ import ru.lab.weblab3.models.entities.Point;
 import ru.lab.weblab3.services.checkers.Field;
 import ru.lab.weblab3.services.factories.PointFactory;
 
+import javax.faces.bean.ApplicationScoped;
 import javax.faces.bean.ManagedBean;
-import javax.faces.bean.SessionScoped;
 import java.util.Arrays;
 import java.util.List;
 
-@ManagedBean(name = "pointsService", eager = true)
-@SessionScoped
-public class PointsService {
+@ManagedBean(name = "pointsView", eager = true)
+@ApplicationScoped
+public class PointsView {
 
     private Double currentX;
     private Double currentY;
@@ -32,7 +32,7 @@ public class PointsService {
     private PointFactory pointFactory;
 
 
-    public PointsService() {
+    public PointsView() {
         pointsDAO = PointsDAOImpl.getInstance();
         pointFactory = PointFactory.getInstance(new Field());
         rValues = Arrays.asList(1.0, 1.5, 2.0, 2.5, 3.0);
@@ -42,6 +42,7 @@ public class PointsService {
     }
 
     public void addPoint() {
+        System.out.println(10/0);
         Point point = pointFactory.buildPoint(currentX, currentY, getCurrentR());
         pointsDAO.addPoint(point);
     }

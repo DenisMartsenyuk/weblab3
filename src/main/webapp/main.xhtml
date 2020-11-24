@@ -24,7 +24,7 @@
         <aside class="right">
             <section>
                 <div class="scroll-table">
-                    <pr:dataTable id="table-result" value="#{pointsService.getPoints()}" var="point">
+                    <pr:dataTable id="table-result" value="#{pointsView.getPoints()}" var="point">
                         <pr:column>
                             <f:facet name="header">X</f:facet>
                             #{point.x}
@@ -99,7 +99,7 @@
             <h:form id="change-values">
                 <div class="labels">X</div>
                 <div>
-                    <h:selectOneMenu styleClass="select-item" id="x-value" title="X" converter="javax.faces.Double" value="#{pointsService.currentX}">
+                    <h:selectOneMenu styleClass="select-item" id="x-value" title="X" converter="javax.faces.Double" value="#{pointsView.currentX}">
                         <f:selectItem itemLabel="-4" itemValue="-4"/>
                         <f:selectItem itemLabel="-3" itemValue="-3"/>
                         <f:selectItem itemLabel="-2" itemValue="-2"/>
@@ -115,7 +115,7 @@
 
                 <div class="labels">Y</div>
                 <div>
-                    <h:inputText styleClass="field" id="y-input" title="Y" maxlength="7" a:placeholder="[-3; 3]" converterMessage="Нужно ввести число." validatorMessage="Число не подходит под ограничения." converter="javax.faces.Double" value="#{pointsService.currentY}">
+                    <h:inputText styleClass="field" id="y-input" title="Y" maxlength="7" a:placeholder="[-3; 3]" converterMessage="Нужно ввести число." validatorMessage="Число не подходит под ограничения." converter="javax.faces.Double" value="#{pointsView.currentY}">
                         <f:validateDoubleRange minimum="-3.0" maximum="3.0"/>
                         <pr:ajax event="change" update="y-input message"/>
                     </h:inputText>
@@ -126,27 +126,27 @@
 
                 <div class="labels">R</div>
                 <div>
-                    <h:selectBooleanCheckbox styleClass="r-checkbox" title="1.0" value="#{pointsService.is1R}" onclick="selectCheckBox(this)">
+                    <h:selectBooleanCheckbox styleClass="r-checkbox" title="1.0" value="#{pointsView.is1R}" onclick="selectCheckBox(this)">
                         <pr:ajax event="change"/>
                     </h:selectBooleanCheckbox>
                     <label>1.0</label>
 
-                    <h:selectBooleanCheckbox styleClass="r-checkbox" title="1.5" value="#{pointsService.is2R}" onclick="selectCheckBox(this)">
+                    <h:selectBooleanCheckbox styleClass="r-checkbox" title="1.5" value="#{pointsView.is2R}" onclick="selectCheckBox(this)">
                         <pr:ajax event="change"/>
                     </h:selectBooleanCheckbox>
                     <label>1.5</label>
 
-                    <h:selectBooleanCheckbox styleClass="r-checkbox" title="2.0" value="#{pointsService.is3R}" onclick="selectCheckBox(this)">
+                    <h:selectBooleanCheckbox styleClass="r-checkbox" title="2.0" value="#{pointsView.is3R}" onclick="selectCheckBox(this)">
                         <pr:ajax event="change"/>
                     </h:selectBooleanCheckbox>
                     <label>2.0</label>
 
-                    <h:selectBooleanCheckbox styleClass="r-checkbox" title="2.5" value="#{pointsService.is4R}" onclick="selectCheckBox(this)">
+                    <h:selectBooleanCheckbox styleClass="r-checkbox" title="2.5" value="#{pointsView.is4R}" onclick="selectCheckBox(this)">
                         <pr:ajax event="change"/>
                     </h:selectBooleanCheckbox>
                     <label>2.5</label>
 
-                    <h:selectBooleanCheckbox styleClass="r-checkbox" title="3.0" value="#{pointsService.is5R}" onclick="selectCheckBox(this)">
+                    <h:selectBooleanCheckbox styleClass="r-checkbox" title="3.0" value="#{pointsView.is5R}" onclick="selectCheckBox(this)">
                         <pr:ajax event="change"/>
                     </h:selectBooleanCheckbox>
                     <label>3.0</label>
@@ -154,15 +154,15 @@
             </h:form>
 
             <h:form>
-                <pr:commandButton value="Проверить" styleClass="god-button button" update="table-result" action="#{pointsService.addPoint()}" oncomplete="drawPoints();"/>
-                <pr:commandButton value="Очистить" styleClass="god-button button" update="table-result" action="#{pointsService.clear()}" oncomplete="drawPoints();"/>
+                <pr:commandButton value="Проверить" styleClass="god-button button" update="table-result" action="#{pointsView.addPoint()}" oncomplete="drawPoints();"/>
+                <pr:commandButton value="Очистить" styleClass="god-button button" update="table-result" action="#{pointsView.clear()}" oncomplete="drawPoints();"/>
                 <pr:commandButton styleClass="god-button button" value="Самобичевание" action="start-page"/>
             </h:form>
 
             <h:form id="check-form-invisible" style="display: none;">
-                <h:inputHidden id="x-value-click" converter="javax.faces.Double" value="#{pointsService.clickX}"/>
-                <h:inputHidden id="y-value-click" converter="javax.faces.Double" value="#{pointsService.clickY}"/>
-                <pr:commandButton id="button-invisible" update="table-result" action="#{pointsService.addClickedPoint()}" oncomplete="drawPoints();"/>
+                <h:inputHidden id="x-value-click" converter="javax.faces.Double" value="#{pointsView.clickX}"/>
+                <h:inputHidden id="y-value-click" converter="javax.faces.Double" value="#{pointsView.clickY}"/>
+                <pr:commandButton id="button-invisible" update="table-result" action="#{pointsView.addClickedPoint()}" oncomplete="drawPoints();"/>
             </h:form>
 
         </div>
