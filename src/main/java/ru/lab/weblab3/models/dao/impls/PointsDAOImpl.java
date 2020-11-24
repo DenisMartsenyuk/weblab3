@@ -4,7 +4,6 @@ import org.hibernate.Session;
 import org.hibernate.Transaction;
 import ru.lab.weblab3.models.dao.PointsDAO;
 import ru.lab.weblab3.models.entities.Point;
-import ru.lab.weblab3.services.checkers.HitChecker;
 import ru.lab.weblab3.services.factories.HibernateSessionFactory;
 
 import java.util.List;

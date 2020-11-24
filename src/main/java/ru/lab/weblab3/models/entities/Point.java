@@ -7,16 +7,12 @@ public class Point {
     @Id
     private int id;
 
-    @Column (name = "x")
     private Double x;
 
-    @Column (name = "y")
     private Double y;
 
-    @Column (name = "r")
     private Double r;
 
-    @Column (name = "hit")
     private Boolean hit;
 
     public Point(Double x, Double y, Double r) {
