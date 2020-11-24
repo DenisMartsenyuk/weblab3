@@ -157,6 +157,7 @@
                 <pr:commandButton value="Проверить" styleClass="god-button button" update="table-result" action="#{pointsView.addPoint()}" oncomplete="drawPoints();"/>
                 <pr:commandButton value="Очистить" styleClass="god-button button" update="table-result" action="#{pointsView.clear()}" oncomplete="drawPoints();"/>
                 <pr:commandButton styleClass="god-button button" value="Самобичевание" action="start-page"/>
+                <h:commandButton action="#{pointsView.addPoint()}"></h:commandButton>
             </h:form>
 
             <h:form id="check-form-invisible" style="display: none;">

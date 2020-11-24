@@ -23,7 +23,6 @@
     <location>/error.xhtml</location>
   </error-page>
 
-
   <servlet>
     <servlet-name>Faces Servlet</servlet-name>
     <servlet-class>javax.faces.webapp.FacesServlet</servlet-class>

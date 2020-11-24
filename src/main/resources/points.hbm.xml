@@ -1,0 +1,30 @@
+<?xml version='1.0'?>
+<!DOCTYPE hibernate-mapping PUBLIC
+        "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+        "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+
+<hibernate-mapping package="ru.lab.weblab3.models.entities">
+
+    <class name="Point" table="points">
+        <id name="id" type="int" column="id" >
+            <generator class="increment"/>
+        </id>
+
+        <property name="x" >
+            <column name="x" />
+        </property>
+
+        <property name="y" >
+            <column name="y" />
+        </property>
+
+        <property name="r" >
+            <column name="r" />
+        </property>
+
+        <property name="hit" >
+            <column name="hit" />
+        </property>
+    </class>
+
+</hibernate-mapping>

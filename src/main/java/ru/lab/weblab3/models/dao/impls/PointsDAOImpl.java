@@ -41,7 +41,7 @@ public class PointsDAOImpl implements PointsDAO {
     public Boolean clear() {
         Session session = HibernateSessionFactory.getSessionFactory().openSession();
         Transaction tx1 = session.beginTransaction();
-        session.createQuery("delete from Point").executeUpdate(); //todo перейти от запроса к jpa  и аннотация Transaction
+        session.createQuery("delete from Point").executeUpdate();
         tx1.commit();
         session.close();
         return true;

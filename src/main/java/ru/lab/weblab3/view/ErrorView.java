@@ -40,4 +40,11 @@ public class ErrorView {
         return (String) FacesContext.getCurrentInstance().getExternalContext().
                 getRequestMap().get("javax.servlet.error.servlet_name");
     }
+
+    public void showError() {
+        FacesContext.getCurrentInstance()
+                .getApplication()
+                .getNavigationHandler()
+                .handleNavigation(FacesContext.getCurrentInstance(), null, "/error.xhtml");
+    }
 }

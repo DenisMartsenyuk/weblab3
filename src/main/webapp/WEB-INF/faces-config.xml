@@ -10,6 +10,12 @@
         <managed-bean-scope>request</managed-bean-scope>
     </managed-bean>
 
+    <factory>
+        <exception-handler-factory>
+            org.omnifaces.exceptionhandler.FullAjaxExceptionHandlerFactory
+        </exception-handler-factory>
+    </factory>
+
     <navigation-rule>
         <from-view-id>/index.xhtml</from-view-id>
         <navigation-case>
