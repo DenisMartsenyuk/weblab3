@@ -2,7 +2,6 @@
 <!DOCTYPE html>
 <html xmlns="http://www.w3.org/1999/xhtml"
       xmlns:h="http://xmlns.jcp.org/jsf/html"
-      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
       xmlns:f="http://xmlns.jcp.org/jsf/core"
       xmlns:p="http://java.sun.com/jsf/html"
       xmlns:a="http://xmlns.jcp.org/jsf/passthrough"
@@ -12,6 +11,8 @@
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
     <script src="js/index_script.js"></script>
     <link rel="stylesheet" href="css/main_style.css" type="text/css"/>
+
+    <!--    todo поменять ссылки-->
 </h:head>
 
 <h:body>
@@ -153,9 +154,9 @@
             </h:form>
 
             <h:form>
-                <pr:commandButton value="Проверить" styleClass="god-button" update="table-result" action="#{pointsService.addPoint()}" oncomplete="drawPoints();"/>
-                <pr:commandButton value="Очистить" styleClass="god-button" update="table-result" action="#{pointsService.clear()}" oncomplete="drawPoints();"/>
-                <p:commandButton styleClass=" god-button button" value="Самобичевание" action="start-page"/>
+                <pr:commandButton value="Проверить" styleClass="god-button button" update="table-result" action="#{pointsService.addPoint()}" oncomplete="drawPoints();"/>
+                <pr:commandButton value="Очистить" styleClass="god-button button" update="table-result" action="#{pointsService.clear()}" oncomplete="drawPoints();"/>
+                <pr:commandButton styleClass="god-button button" value="Самобичевание" action="start-page"/>
             </h:form>
 
             <h:form id="check-form-invisible" style="display: none;">

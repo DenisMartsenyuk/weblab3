@@ -3,10 +3,8 @@ package ru.lab.weblab3.models.entities;
 import javax.persistence.*;
 
 @Entity
-@Table (name = "points")
 public class Point {
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int id;
 
     @Column (name = "x")
@@ -28,6 +26,14 @@ public class Point {
     }
 
     protected Point() {
+    }
+
+    public int getId() {
+        return id;
+    }
+
+    public void setId(int id) {
+        this.id = id;
     }
 
     public Double getX() {

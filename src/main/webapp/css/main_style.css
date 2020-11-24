@@ -71,10 +71,9 @@ aside {
 }
 
 #table-result {
+    background-color: white;
     width: 100%;
     height: var(--height);
-    border-collapse: collapse;
-    border-radius: var(--border-radius);
 }
 
 .scroll-table {
@@ -82,7 +81,7 @@ aside {
     height: var(--height);
     overflow-x: auto;
     width: 100%;
-    border-radius: 4px;
+
 }
 
 .select-item {
@@ -98,7 +97,7 @@ aside {
 }
 
 .labels {
-    font-size: 15px;
+    font-size: 22px;
     font-family: Roboto-Regular, sans-serif;
     padding: 4px 4px 4px 4px;
     align: center;
@@ -135,7 +134,6 @@ aside {
     letter-spacing: .1em;
     font-size: 20px;
     font-family: Roboto-Italic, sans-serif;
-    padding: 13px 39px 13px 39px;
     cursor: pointer;
 }
 
@@ -147,8 +145,19 @@ aside {
     letter-spacing: .1em;
     font-size: 20px;
     font-family: Roboto-Italic, sans-serif;
-    padding: 13px 39px 13px 39px;
     cursor: pointer;
+}
+
+button:focus {
+    outline: none;
+}
+
+button:active {
+    outline: none;
+}
+
+input:focus {
+    outline-color: var(--color2);
 }
 
 #graph {
@@ -166,4 +175,41 @@ aside {
 
 .axis {
     stroke: var(--dark-color);
+}
+
+.ui-datatable-tablewrapper .ui-state-default {
+    background-color: transparent;
+    color: var(--dark-color);
+    border-color: var(--color1);
+    border-spacing: 0;
+    border-left: transparent;
+    border-right: transparent;
+    border-top: transparent;
+    border-radius: 4px;
+}
+
+.ui-widget-content {
+    background-color: transparent;
+    color: var(--dark-color);
+    border-color: var(--color1);
+    border-spacing: 0;
+    border-left: transparent;
+    border-right: transparent;
+    border-bottom: transparent;
+}
+
+.ui-datatable-odd {
+    background-color: transparent;
+}
+
+.ui-datatable-even {
+    background-color: transparent;
+}
+
+ui-datatable-tablewrapper {
+    background-color: transparent;
+}
+
+.select-item:focus {
+    outline-color: var(--color2);
 }
